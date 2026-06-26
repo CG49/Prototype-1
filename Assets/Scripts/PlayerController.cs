@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     // Movement tuning ( editable in Inspector
-    public float speed = 15.0f;
-    public float turnSpeed = 100f;
+    public float speed = 10f;
+    public float turnSpeed = 50f;
 
     // Input System action exposed in Inspector for binding ( WASD/Arrow keys )
     public InputAction MoveAction;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         // Move forward/back along local Z using the y component
         transform.Translate( moveInput.y * speed * Time.deltaTime * Vector3.forward );
 
-        // Rotate around local Y (yaw) using the x component
+        // Rotate around local Y (y-axis) using the x component
         transform.Rotate( Vector3.up, Time.deltaTime * turnSpeed * moveInput.x );
     }
 }
