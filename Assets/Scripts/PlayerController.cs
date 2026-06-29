@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,10 +13,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
         // Enable the MoveAction so it starts reading input
-        MoveAction.Enable();
+        if (MoveAction != null)
+            MoveAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        if (MoveAction != null)
+            MoveAction.Disable();
     }
 
     // Update is called once per frame

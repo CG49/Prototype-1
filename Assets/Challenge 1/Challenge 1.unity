@@ -961,6 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7b6adcf10fb554faa3a8cdc049eed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpinPropellerX
+  spinSpeed: 1000
 --- !u!850595691 &738013953
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1072,9 +1073,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0232a093d67e448b7a80e945acf8e227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerX
-  speed: 6
-  rotationSpeed: 9
-  verticalInput: 0
+  speed: 10
+  rotationSpeed: 80
+  verticalAction:
+    m_Name: Vertical
+    m_Type: 0
+    m_ExpectedControlType: Axis
+    m_Id: 5cb9ea6d-4d68-480f-8280-bc4588e75ba3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: 552dbfb5-805f-4865-96e6-657f6f962cae
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 111b907e-c3f3-45a7-8ea1-947121d82c38
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 5e12c117-c2ee-47f6-9908-9188c20f1adb
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: 1D Axis
+      m_Id: 7a559076-0689-42f5-a46f-36d1225c6708
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 6d40e841-76dc-41df-82f5-3ba409464296
+      m_Path: <Gamepad>/dpad/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: cfcaf6e4-f349-415b-9cc4-d82cf3e30439
+      m_Path: <Gamepad>/dpad/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: 1D Axis
+      m_Id: d618cf3a-2abe-49ea-baf4-0f98fb758a61
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 5f6b3063-4e07-41f0-a22e-6d859cb91409
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 78facbff-b118-4f72-9142-198f8076965f
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    m_Flags: 0
 --- !u!1 &899755176
 GameObject:
   m_ObjectHideFlags: 0

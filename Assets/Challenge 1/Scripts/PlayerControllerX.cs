@@ -1,24 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerControllerX : MonoBehaviour
 {
     public float speed = 10f;
     public float rotationSpeed = 80f;
-    public float verticalInput;
 
-    // Start is called before the first frame update
-    void Start()
+    public InputAction verticalAction;
+
+    void OnEnable()
     {
+        if (verticalAction != null)
+            verticalAction.Enable();
+    }
 
+    void OnDisable()
+    {
+        if (verticalAction != null)
+            verticalAction.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
         // get the user's vertical input
-        verticalInput = Input.GetAxis("Vertical");
+        float verticalInput = verticalAction.ReadValue<float>();
 
         // move the plane forward at a constant rate
         transform.Translate(speed * Time.deltaTime * Vector3.forward);
