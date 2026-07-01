@@ -1,17 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    // Movement tuning ( editable in Inspector
     public float speed = 10f;
     public float turnSpeed = 50f;
+
     // Input System action exposed in Inspector for binding ( WASD/Arrow keys )
     private PlayerInput playerInput;
     public string playerID;
     public InputAction moveAction;
 
-    // Current input value (x=left/right, y=forward/back), kept private for internal use
     private Vector2 moveInput;
     private Rigidbody rb;
 
@@ -33,32 +34,18 @@ public class PlayerController : MonoBehaviour
             moveAction = playerInput.actions["Move"];
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-        //if (playerInput.playerIndex == 0)
-        //    transform.position = new Vector3(-5, 0, 0);
-        //else
-        //    transform.position = new Vector3(5, 0, 0);
-    }
-
     void OnEnable()
     {
-        if (moveAction != null)
-            moveAction.Enable();
+        moveAction?.Enable();
 
-        if (switchCameraAction != null)
-            switchCameraAction.Enable();
+        switchCameraAction?.Enable();
     }
 
     void OnDisable()
     {
-        if (moveAction != null)
-            moveAction.Disable();
+        moveAction?.Disable();
 
-        if (switchCameraAction != null)
-            switchCameraAction.Disable();
+        switchCameraAction?.Disable();
     }
 
     // Update is called once per frame
@@ -72,12 +59,6 @@ public class PlayerController : MonoBehaviour
             mainCamera.enabled = !mainCamera.enabled;
             hoodCamera.enabled = !hoodCamera.enabled;
         }
-
-        // Move forward/back along local Z using the y component
-        // transform.Translate( moveInput.y * speed * Time.deltaTime * Vector3.forward );
-
-        // Rotate around local Y (y-axis) using the x component
-        // transform.Rotate( Vector3.up, Time.deltaTime * turnSpeed * moveInput.x );
     }
 
     void FixedUpdate()
@@ -85,7 +66,7 @@ public class PlayerController : MonoBehaviour
         // Move forward/backward
         rb.MovePosition(
             rb.position +
-            transform.forward * moveInput.y * speed * Time.fixedDeltaTime
+            (moveInput.y * speed * Time.fixedDeltaTime * transform.forward)
         );
 
         // Rotate left/right
